@@ -71,7 +71,7 @@ const SideComing = () => {
         },
       };
       const { data } = await axios.get(
-        `http://localhost:4444/api/user?search=${search}`,
+        `https://comm-u-cate.onrender.com/api/user?search=${search}`,
         config
       );
       setLoading(false);
@@ -99,7 +99,7 @@ const SideComing = () => {
         },
       };
       const { data } = await axios.post(
-        `http://localhost:4444/api/chat`,
+        `https://comm-u-cate.onrender.com/api/chat`,
         { userId },
         config
       );

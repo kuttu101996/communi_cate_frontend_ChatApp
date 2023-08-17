@@ -104,7 +104,7 @@ const Signup = () => {
         },
       };
       const { data } = await axios.post(
-        `http://localhost:4444/api/user/register`,
+        `https://comm-u-cate.onrender.com/api/user/register`,
         { name, email, password, pic },
         head
       );
