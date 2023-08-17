@@ -1,0 +1,25 @@
+/* #25d366 */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+.App {
+  font-family: 'Roboto', sans-serif;
+  /* font-family: ''; */
+  min-height: 100vh;
+  display: flex;
+  background-color: #e6ffda;
+  color: rgba(0, 128, 128, 0.816);
+  /* color: #38B2AC; */
+  /* color: rgba(0, 95, 0, 0.762); */
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.281);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
