@@ -10,9 +10,11 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import axios from "axios";
+import emailValidator from 'email-validator'
 // import { useHistory } from "react-router-dom";
 
 const Signup = () => {
+  const [isValid, setIsValid] = useState(false)
   const [show, setShow] = useState(false);
   const [showCnf, setShowCnf] = useState(false);
   const [name, setName] = useState("");
@@ -72,7 +74,18 @@ const Signup = () => {
   };
 
   const handleSubmit = async () => {
-    setLoading(true);
+    setLoading(true); 
+    if (isValid===false) {
+      toast({
+        title: "Please enter a valid Email address",
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+      return;
+    }
     if (!name || !email || !password || !confirmpassword) {
       toast({
         title: "Please Fill all the Fields",
@@ -103,8 +116,9 @@ const Signup = () => {
           "Content-type": "application/json",
         },
       };
+      // comm-u-cate.onrender.com
       const { data } = await axios.post(
-        `https://comm-u-cate.onrender.com/api/user/register`,
+        `http://localhost:4444/api/user/register`,
         { name, email, password, pic },
         head
       );
@@ -119,6 +133,7 @@ const Signup = () => {
 
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
+      setIsValid(false)
       return;
     } catch (error) {
       toast({
@@ -150,6 +165,8 @@ const Signup = () => {
         <Input
           placeholder="Enter Your Email"
           onChange={(e) => {
+            const email = e.target.value
+            setIsValid(emailValidator.validate(email))
             setEmail(e.target.value);
           }}
         />
