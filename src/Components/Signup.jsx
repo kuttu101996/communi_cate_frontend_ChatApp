@@ -10,11 +10,10 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import axios from "axios";
-import emailValidator from 'email-validator'
-// import { useHistory } from "react-router-dom";
+import emailValidator from "email-validator";
 
 const Signup = () => {
-  const [isValid, setIsValid] = useState(false)
+  const [isValid, setIsValid] = useState(false);
   const [show, setShow] = useState(false);
   const [showCnf, setShowCnf] = useState(false);
   const [name, setName] = useState("");
@@ -26,7 +25,6 @@ const Signup = () => {
   );
   const [loading, setLoading] = useState(false);
   const toast = useToast();
-  // const history = useHistory();
 
   const postDetails = (pics) => {
     setLoading(true);
@@ -47,10 +45,14 @@ const Signup = () => {
       data.append("upload_preset", "first_chat_app");
       data.append("cloud_name", "dlz45puq4");
 
-      fetch(`https://api.cloudinary.com/v1_1/dlz45puq4/image/upload`, {public_id: `${data}`}, {
-        method: "POST",
-        body: data,
-      })
+      fetch(
+        `https://api.cloudinary.com/v1_1/dlz45puq4/image/upload`,
+        { public_id: `${data}` },
+        {
+          method: "POST",
+          body: data,
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setPic(data.url.toString(""));
@@ -74,8 +76,8 @@ const Signup = () => {
   };
 
   const handleSubmit = async () => {
-    setLoading(true); 
-    if (isValid===false) {
+    setLoading(true);
+    if (isValid === false) {
       toast({
         title: "Please enter a valid Email address",
         status: "warning",
@@ -131,9 +133,8 @@ const Signup = () => {
         position: "top",
       });
 
-      localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
-      setIsValid(false)
+      setIsValid(false);
       return;
     } catch (error) {
       toast({
@@ -165,8 +166,8 @@ const Signup = () => {
         <Input
           placeholder="Enter Your Email"
           onChange={(e) => {
-            const email = e.target.value
-            setIsValid(emailValidator.validate(email))
+            const email = e.target.value;
+            setIsValid(emailValidator.validate(email));
             setEmail(e.target.value);
           }}
         />
