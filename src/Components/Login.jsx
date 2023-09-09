@@ -44,7 +44,7 @@ const Login = () => {
         },
       };
       const { data } = await axios.post(
-        `https://comm-u-cate.onrender.com/api/user/login`,
+        `https://chat-dev.onrender.com/api/user/login`,
         { email, password },
         head
       );
@@ -61,7 +61,7 @@ const Login = () => {
       setLoading(false);
       setTimeout(() => {
         navigate("/chat");
-      }, 2000);
+      }, 1500);
       return;
     } catch (error) {
       toast({

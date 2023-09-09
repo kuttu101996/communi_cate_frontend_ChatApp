@@ -120,18 +120,20 @@ const Signup = () => {
       };
       // comm-u-cate.onrender.com
       const { data } = await axios.post(
-        `http://localhost:4444/api/user/register`,
+        `https://chat-dev.onrender.com/api/user/register`,
         { name, email, password, pic },
         head
       );
 
-      toast({
-        title: "Registration Successful",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-        position: "top",
-      });
+      if (data) {
+        toast({
+          title: "Registration Successful",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+      }
 
       setLoading(false);
       setIsValid(false);

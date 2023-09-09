@@ -54,7 +54,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         },
       };
       const { data } = await axios.put(
-        `https://comm-u-cate.onrender.com/api/chat/removefromgroup`,
+        `https://chat-dev.onrender.com/api/chat/removefromgroup`,
         {
           chatId: selectedChat._id,
           userId: userToRemove._id,
@@ -111,7 +111,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         },
       };
       const { data } = await axios.put(
-        `https://comm-u-cate.onrender.com/api/chat/addToGroup`,
+        `https://chat-dev.onrender.com/api/chat/addToGroup`,
         {
           chatId: selectedChat._id,
           userId: userToAdd._id,
@@ -146,7 +146,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         },
       };
       const { data } = await axios.put(
-        `https://comm-u-cate.onrender.com/api/chat/rename`,
+        `https://chat-dev.onrender.com/api/chat/rename`,
         {
           chatId: selectedChat._id,
           chatName: groupChatName,
@@ -182,7 +182,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         },
       };
       const { data } = await axios.get(
-        `https://comm-u-cate.onrender.com/api/user?search=${query}`,
+        `https://chat-dev.onrender.com/api/user?search=${query}`,
         config
       );
       setLoading(false);
