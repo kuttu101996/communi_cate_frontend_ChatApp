@@ -44,7 +44,7 @@ const GroupChatModal = ({ children }) => {
         },
       };
       const { data } = await axios.get(
-        `https://chat-dev.onrender.com/api/user?search=${query}`,
+        `https://commu-cate.onrender.com/api/user?search=${query}`,
         config
       );
       setLoading(false);
@@ -142,7 +142,7 @@ const GroupChatModal = ({ children }) => {
       };
 
       const { data } = await axios.post(
-        `https://chat-dev.onrender.com/api/chat/group`,
+        `https://commu-cate.onrender.com/api/chat/group`,
         {
           name: groupChatName,
           users: JSON.stringify(selectedUsers.map((ele) => ele._id)),

@@ -26,7 +26,7 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const toast = useToast();
 
-  const postDetails = (pics) => {
+  const postDetails = async (pics) => {
     setLoading(true);
     if (pics === undefined) {
       toast({
@@ -45,9 +45,9 @@ const Signup = () => {
       data.append("upload_preset", "first_chat_app");
       data.append("cloud_name", "dlz45puq4");
 
-      fetch(
+      await fetch(
         `https://api.cloudinary.com/v1_1/dlz45puq4/image/upload`,
-        { public_id: `${data}` },
+        // { public_id: `${data}` },
         {
           method: "POST",
           body: data,
@@ -55,6 +55,7 @@ const Signup = () => {
       )
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           setPic(data.url.toString(""));
           setLoading(false);
         })
@@ -120,7 +121,7 @@ const Signup = () => {
       };
       // comm-u-cate.onrender.com
       const { data } = await axios.post(
-        `https://chat-dev.onrender.com/api/user/register`,
+        `https://commu-cate.onrender.com/api/user/register`,
         { name, email, password, pic },
         head
       );

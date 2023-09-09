@@ -71,7 +71,7 @@ const SideComing = () => {
         },
       };
       const { data } = await axios.get(
-        `https://chat-dev.onrender.com/api/user?search=${search}`,
+        `https://commu-cate.onrender.com/api/user?search=${search}`,
         config
       );
       setLoading(false);
@@ -99,7 +99,7 @@ const SideComing = () => {
         },
       };
       const { data } = await axios.post(
-        `https://chat-dev.onrender.com/api/chat`,
+        `https://commu-cate.onrender.com/api/chat`,
         { userId },
         config
       );
@@ -142,7 +142,7 @@ const SideComing = () => {
           </Button>
         </Tooltip>
         <Text fontSize={"2xl"} fontWeight={"bold"}>
-          Comm-U-Cate
+          Commu-Cate
         </Text>
         <div>
           <Menu>

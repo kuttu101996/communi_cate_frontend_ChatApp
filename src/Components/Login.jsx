@@ -44,7 +44,7 @@ const Login = () => {
         },
       };
       const { data } = await axios.post(
-        `https://chat-dev.onrender.com/api/user/login`,
+        `https://commu-cate.onrender.com/api/user/login`,
         { email, password },
         head
       );

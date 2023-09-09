@@ -28,7 +28,7 @@ const MyChats = ({ fetchAgain }) => {
         },
       };
       const { data } = await axios.get(
-        "https://chat-dev.onrender.com/api/chat",
+        "https://commu-cate.onrender.com/api/chat",
         config
       );
       setChats(data);
