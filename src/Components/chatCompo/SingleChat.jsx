@@ -20,7 +20,7 @@ import io from "socket.io-client";
 import Lottie from "lottie-react";
 import typingAnni from "../../animation/typing.json";
 
-const ENDPOINT = "https://commu-cate.onrender.com/";
+const ENDPOINT = "https://cc-qzzn.onrender.com/";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -45,7 +45,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           },
         };
         const { data } = await axios.post(
-          "https://commu-cate.onrender.com/api/message",
+          "https://cc-qzzn.onrender.com/api/message",
           {
             content: newMessage,
             chatId: selectedChat._id,
@@ -80,7 +80,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.get(
-        `https://commu-cate.onrender.com/api/message/${selectedChat._id}`,
+        `https://cc-qzzn.onrender.com/api/message/${selectedChat._id}`,
         config
       );
       setMessages(data);

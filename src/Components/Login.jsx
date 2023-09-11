@@ -10,7 +10,6 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ChatState } from "../context/ChatProvider";
 
@@ -38,30 +37,61 @@ const Login = () => {
     }
 
     try {
-      const head = {
+      const d2p = {
+        email,
+        password,
+      };
+      await fetch(`https://cc-qzzn.onrender.com/api/user/login`, {
+        method: "POST",
         headers: {
           "Content-type": "application/json",
         },
-      };
-      const { data } = await axios.post(
-        `https://commu-cate.onrender.com/api/user/login`,
-        { email, password },
-        head
-      );
-
-      toast({
-        title: "Login Successful",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-        position: "top",
-      });
-      setUser(data);
-      localStorage.setItem("userInfo", JSON.stringify(data));
+        body: JSON.stringify(d2p),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.message === "User not found") {
+            toast({
+              title: "No User found with this EmailID",
+              status: "warning",
+              duration: 3000,
+              isClosable: true,
+              position: "top-left",
+            });
+            toast({
+              title: "You can Register yourself with this Email",
+              status: "info",
+              duration: 3000,
+              isClosable: true,
+              position: "top-right",
+            });
+          }
+          if (data.message === "Login Successful") {
+            toast({
+              title: "Login Successful",
+              status: "success",
+              duration: 3000,
+              isClosable: true,
+              position: "top",
+            });
+            setUser(data);
+            localStorage.setItem("userInfo", JSON.stringify(data));
+            setTimeout(() => {
+              navigate("/chat");
+            }, 1500);
+          }
+        })
+        .catch((err) => {
+          toast({
+            title: "Error Occured",
+            description: err.message,
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+            position: "bottom",
+          });
+        });
       setLoading(false);
-      setTimeout(() => {
-        navigate("/chat");
-      }, 1500);
       return;
     } catch (error) {
       toast({

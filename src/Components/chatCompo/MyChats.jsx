@@ -28,7 +28,7 @@ const MyChats = ({ fetchAgain }) => {
         },
       };
       const { data } = await axios.get(
-        "https://commu-cate.onrender.com/api/chat",
+        "https://cc-qzzn.onrender.com/api/chat",
         config
       );
       setChats(data);
@@ -123,7 +123,7 @@ const MyChats = ({ fetchAgain }) => {
                               size={"sm"}
                               cursor={"pointer"}
                               name={ele.name}
-                              src={ele.pic}
+                              src={chat.isGroupChat ? chat.chatPic : ele.pic}
                             />
                           </Tooltip>
                         );
@@ -134,7 +134,7 @@ const MyChats = ({ fetchAgain }) => {
                     <Text>
                       {!chat.isGroupChat
                         ? getSender(loggedUser, chat.users)
-                        : chat.chatName}
+                        : `${chat.chatName} - (Group Chat)`}
                     </Text>
                     {chat.latestMessage && (
                       <Text fontSize="xs">

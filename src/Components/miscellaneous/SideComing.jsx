@@ -27,6 +27,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ChatLoading from "../chatCompo/ChatLoading";
 import UserListItem from "../userAvatar/UserListItem";
+import ConfirmationModal from "./ConfirmationModal";
 
 const SideComing = () => {
   const [search, setSearch] = useState("");
@@ -71,7 +72,7 @@ const SideComing = () => {
         },
       };
       const { data } = await axios.get(
-        `https://commu-cate.onrender.com/api/user?search=${search}`,
+        `https://cc-qzzn.onrender.com/api/user?search=${search}`,
         config
       );
       setLoading(false);
@@ -99,7 +100,7 @@ const SideComing = () => {
         },
       };
       const { data } = await axios.post(
-        `https://commu-cate.onrender.com/api/chat`,
+        `https://cc-qzzn.onrender.com/api/chat`,
         { userId },
         config
       );
@@ -118,6 +119,62 @@ const SideComing = () => {
         isClosable: true,
         position: "bottom-left",
       });
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    setLoading(true);
+    try {
+      const token = JSON.parse(localStorage.getItem("userInfo"))?.token;
+      await fetch(`https://cc-qzzn.onrender.com/api/user/deleteAccount`, {
+        method: "DELETE",
+        headers: {
+          authorization: `bearer ${token}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (
+            data.message ===
+            "User and associated chats/messages deleted successfully"
+          ) {
+            localStorage.removeItem("userInfo");
+            toast({
+              title:
+                "Your account has been successfully deleted. Thank you for being a part of our community. We hope to see you again in the future.",
+              status: "info",
+              duration: 4000,
+              isClosable: true,
+              position: "top",
+            });
+            setTimeout(() => {
+              navigate("/");
+            }, 4000);
+          }
+        })
+        .catch((error) => {
+          toast({
+            title: "Error Occured",
+            description: error.message,
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+            position: "bottom",
+          });
+        });
+      setLoading(false);
+      return;
+    } catch (error) {
+      toast({
+        title: "Error Occured",
+        description: error.message,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+      return;
     }
   };
 
@@ -213,6 +270,10 @@ const SideComing = () => {
               </ProfileModal>
               <MenuDivider />
               <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+              <MenuDivider />
+              <ConfirmationModal handleFunction={()=> handleDeleteAccount()}>
+                <MenuItem>Delete My Account</MenuItem>
+              </ConfirmationModal>
             </MenuList>
           </Menu>
         </div>
