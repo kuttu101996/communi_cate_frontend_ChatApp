@@ -121,7 +121,7 @@ const Signup = () => {
       };
       // comm-u-cate.onrender.com
       const { data } = await axios.post(
-        `https://cc-qzzn.onrender.com/api/user/register`,
+        `https://commu-cate.onrender.com/api/user/register`,
         { name, email, password, pic },
         head
       );

@@ -54,7 +54,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         },
       };
       const { data } = await axios.put(
-        `https://cc-qzzn.onrender.com/api/chat/removefromgroup`,
+        `https://commu-cate.onrender.com/api/chat/removefromgroup`,
         {
           chatId: selectedChat._id,
           userId: userToRemove._id,
@@ -111,7 +111,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         },
       };
       const { data } = await axios.put(
-        `https://cc-qzzn.onrender.com/api/chat/addToGroup`,
+        `https://commu-cate.onrender.com/api/chat/addToGroup`,
         {
           chatId: selectedChat._id,
           userId: userToAdd._id,
@@ -146,7 +146,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         },
       };
       const { data } = await axios.put(
-        `https://cc-qzzn.onrender.com/api/chat/rename`,
+        `https://commu-cate.onrender.com/api/chat/rename`,
         {
           chatId: selectedChat._id,
           chatName: groupChatName,
@@ -182,7 +182,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         },
       };
       const { data } = await axios.get(
-        `https://cc-qzzn.onrender.com/api/user?search=${query}`,
+        `https://commu-cate.onrender.com/api/user?search=${query}`,
         config
       );
       setLoading(false);

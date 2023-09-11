@@ -41,7 +41,7 @@ const Login = () => {
         email,
         password,
       };
-      await fetch(`https://cc-qzzn.onrender.com/api/user/login`, {
+      await fetch(`https://commu-cate.onrender.com/api/user/login`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",

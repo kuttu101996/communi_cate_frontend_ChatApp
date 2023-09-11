@@ -72,7 +72,7 @@ const SideComing = () => {
         },
       };
       const { data } = await axios.get(
-        `https://cc-qzzn.onrender.com/api/user?search=${search}`,
+        `https://commu-cate.onrender.com/api/user?search=${search}`,
         config
       );
       setLoading(false);
@@ -100,7 +100,7 @@ const SideComing = () => {
         },
       };
       const { data } = await axios.post(
-        `https://cc-qzzn.onrender.com/api/chat`,
+        `https://commu-cate.onrender.com/api/chat`,
         { userId },
         config
       );
@@ -126,7 +126,7 @@ const SideComing = () => {
     setLoading(true);
     try {
       const token = JSON.parse(localStorage.getItem("userInfo"))?.token;
-      await fetch(`https://cc-qzzn.onrender.com/api/user/deleteAccount`, {
+      await fetch(`https://commu-cate.onrender.com/api/user/deleteAccount`, {
         method: "DELETE",
         headers: {
           authorization: `bearer ${token}`,
